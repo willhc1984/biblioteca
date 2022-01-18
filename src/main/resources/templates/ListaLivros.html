@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+          rel="stylesheet"/>
+</head>
+<body>
+
+<div class="panel panel-default" style="margin: 10px">
+    <div class="panel-heading">
+        <h1 class="panel-title">Lista de livros</h1>
+    </div>
+
+    <form class="form-inline" method="POST" style="margin: 20px 0"
+          th:object="${livro}" th:action="@{/livros}">
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   placeholder="Titulo" th:field="*{titulo}" />
+            <input type="text" class="form-control"
+                   placeholder="Autor" th:field="*{autor}"/>
+            <input type="text" class="form-control"
+                   placeholder="Ano" th:field="*{ano}" />
+            <button type="submit"
+                    class="btn btn-primary">Adicionar</button>
+        </div>
+    </form>
+
+    <br>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Ano</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="livro : ${livros}">
+                    <td th:text="${livro.titulo}"></td>
+                    <td th:text="${livro.autor}"></td>
+                    <td th:text="${livro.ano}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

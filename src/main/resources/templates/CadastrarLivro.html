@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form class="form-inline" method="POST" style="margin: 20px 0"
+          th:object="${livro}" th:action="@{/livros}">
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   placeholder="Titulo" th:field="*{titulo}"/>
+            <input type="text" class="form-control" th:fiel="*{autor}"
+                   placeholder="Autor"/>
+            <input type="text" class="form-control" th:field="*{ano}"
+                   placeholder="Ano"/>
+            <button type="submit"
+                    class="btn btn-primary">Adicionar</button>
+        </div>
+    </form>
+
+</body>
+</html>
