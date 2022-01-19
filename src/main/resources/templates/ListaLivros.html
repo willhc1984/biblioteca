@@ -7,25 +7,44 @@
           rel="stylesheet"/>
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
           rel="stylesheet"/>
+
 </head>
 <body>
 
-<div class="panel panel-default" style="margin: 10px">
+<div class="panel panel-default" style="margin: 40px">
     <div class="panel-heading">
-        <h1 class="panel-title">Lista de livros</h1>
+        <h1 class="panel-title">Cadastrar livro</h1>
     </div>
 
-    <form class="form-inline" method="POST" style="margin: 20px 0"
-          th:object="${livro}" th:action="@{/livros}">
-        <div class="form-group">
-            <input type="text" class="form-control"
-                   placeholder="Titulo" th:field="*{titulo}" />
-            <input type="text" class="form-control"
-                   placeholder="Autor" th:field="*{autor}"/>
-            <input type="text" class="form-control"
-                   placeholder="Ano" th:field="*{ano}" />
-            <button type="submit"
-                    class="btn btn-primary">Adicionar</button>
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <input type="text" class="form-control" placeholder="Titulo" th:field="*{titulo}" aria-label="First name">-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <input type="text" class="form-control" placeholder="Autor" th:field="*{autor}" aria-label="Last name">-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <input type="text" class="form-control" placeholder="Ano" th:field="*{ano}" aria-label="Last name">-->
+<!--        </div>-->
+<!--        <div class="col"><button type="submit"-->
+<!--                class="btn btn-primary">Adicionar</button>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <form class="form-row" method="POST" th:object="${livro}" th:action="@{/livros}" style="margin: 20px 0">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Titulo" th:field="*{titulo}" aria-label="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Autor" th:field="*{autor}" aria-label="Last name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Ano" th:field="*{ano}" aria-label="Last name">
+            </div>
+            <div class="col"><button type="submit"
+                                     class="btn btn-primary">Adicionar</button>
+            </div>
         </div>
     </form>
 
@@ -44,10 +63,15 @@
                     <td th:text="${livro.titulo}"></td>
                     <td th:text="${livro.autor}"></td>
                     <td th:text="${livro.ano}"></td>
+                    <td><a th:href="@{/livros/excluir/{id} (id=${livro.id})}">Excluir</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

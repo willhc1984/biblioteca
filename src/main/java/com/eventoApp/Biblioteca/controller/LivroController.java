@@ -4,9 +4,8 @@ import com.eventoApp.Biblioteca.model.Livro;
 import com.eventoApp.Biblioteca.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -29,5 +28,14 @@ public class LivroController {
         this.livros.save(livro);
         return "redirect:/livros";
     }
+
+    @GetMapping("/excluir/{id}")
+    public String excluirLivro(@PathVariable("id") Long id, Model model){
+        Livro livro = livros.findById(id).orElseThrow();
+        livros.delete(livro);
+        return "redirect:/livros";
+    }
+
+
 
 }
